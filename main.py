@@ -13,8 +13,20 @@ user_two = {
     "connected_banks" : [("Great Union", 200) , ("Red Keep Bank", 460), ("Citadel", 190)]
 }
 
-username = "rick123"
-password = "CarlJudith321"
+username = input("Please enter your username! ")
 
-while password != user_one["password"] or username != user_one["username"]: 
-    
+while username != user_one["username"]: 
+    print(f"Entered username is: {username}")
+    username = input("Please try again! ")
+
+password = input("Please enter your password! ")
+
+while password != user_one["password"]:
+    password = input("Please try again ")
+
+print("Verification successful! Welcome!")
+
+print("Your available balance is: ")
+print(user_one["account_balance"])
+
+print("Your available funds from connected accounts are:")
