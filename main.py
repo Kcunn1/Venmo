@@ -13,20 +13,33 @@ user_two = {
     "connected_banks" : [("Great Union", 200) , ("Red Keep Bank", 460), ("Citadel", 190)]
 }
 
-username = input("Please enter your username! ")
+# username = input("Please enter your username! ")
 
-while username != user_one["username"]: 
-    print(f"Entered username is: {username}")
-    username = input("Please try again! ")
+# while username != user_one["username"]: 
+#     print(f"Entered username is: {username}")
+#     username = input("Please try again! ")
 
-password = input("Please enter your password! ")
+# password = input("Please enter your password! ")
 
-while password != user_one["password"]:
-    password = input("Please try again ")
+# while password != user_one["password"]:
+#     password = input("Please try again ")
 
-print("Verification successful! Welcome!")
+# print("Verification successful! Welcome!")
 
-print("Your available balance is: ")
-print(user_one["account_balance"])
+# print(f"Your available balance is \n{user_one['account_balance']} ")
 
-print("Your available funds from connected accounts are:")
+# print(f"Your available funds from connected banks are as listed: ")
+
+for number in range(len(user_one["connected_banks"])):
+    print(f"{user_one['connected_banks'][number][0]}: {user_one['connected_banks'][number][1]}")
+
+print("Beginning user transaction... Please wait")
+
+answer = input(f"Would you like to proceed with transfer to {user_two['full_name']}? y/n ")
+
+while answer != "y":
+    print("Transaction cancelled")
+    break
+
+print(f"Proceeding with transfer to {user_two['full_name']}!")
+    
