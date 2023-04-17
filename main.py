@@ -30,16 +30,26 @@ user_two = {
 
 # print(f"Your available funds from connected banks are as listed: ")
 
-for number in range(len(user_one["connected_banks"])):
-    print(f"{user_one['connected_banks'][number][0]}: {user_one['connected_banks'][number][1]}")
+# for number in range(len(user_one["connected_banks"])):
+#     print(f"{user_one['connected_banks'][number][0]}: {user_one['connected_banks'][number][1]}")
 
 print("Beginning user transaction... Please wait")
-
-answer = input(f"Would you like to proceed with transfer to {user_two['full_name']}? y/n ")
-
-while answer != "y":
-    print("Transaction cancelled")
-    break
-
-print(f"Proceeding with transfer to {user_two['full_name']}!")
-    
+def transfer_money ():
+    while True :
+        answer = input(f"Would you like to proceed with transfer to {user_two['full_name']}? y/n ")
+        if answer == "n":
+             print(f"Transaction cancelled... Your account balance is {user_one['account_balance']}")
+             print("Goodbye")
+             break
+        if answer == "y":
+            print(f"Proceeding with transfer to {user_two['full_name']}!")
+            amount = input(f"How much would you like to transfer? (whole numbers only)")
+            if int(amount) >= user_one["account_balance"]:
+                print(f"Insufficient funds.. Your current account balance is {user_one['account_balance']}")
+                amount = input(f"How much would you like to transfer?")
+            if int(amount) <= user_one["account_balance"]:
+                user_one["account_balance"]= user_one["account_balance"]- int(amount)
+                user_two["account_balance"]= user_two["account_balance"]+ int(amount)
+                print(f"Your remaining balance is \n{user_one['account_balance']}")
+            
+transfer_money()
